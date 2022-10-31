@@ -1,10 +1,8 @@
-
 // https://vitejs.dev/config/
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import htmlPlugin, { Options as HtmlPluginOptions } from 'vite-plugin-html-config';
 import path from 'path';
-import eslitPlugin from 'vite-plugin-eslint';
 
 const _BASE_URL = 'TEST';
 
@@ -16,13 +14,7 @@ export default defineConfig(mode => {
 	};
 
 	return {
-		plugins: [
-			vue(),
-			htmlPlugin(htmlPluginOption),
-			// eslitPlugin({
-			// 	cache: false
-			// })
-		],
+		plugins: [vue(), htmlPlugin(htmlPluginOption)],
 		resolve: {
 			alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }] // 添加src文件夹'@'别名
 		},

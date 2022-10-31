@@ -4,7 +4,7 @@
  * @param params
  * @returns
  */
- export const spliceQueryParams = (url: string, params: any) => {
+export const spliceQueryParams = (url: string, params: any) => {
 	const tempParams: any = [];
 	if (Object.keys(params).length <= 0) return url;
 
