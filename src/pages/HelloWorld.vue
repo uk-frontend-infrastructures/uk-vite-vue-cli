@@ -5,12 +5,13 @@ const store = useUser()
 </script>
 
 <template>
-	<div className="hello-world">
+	<div class="hello-world">
 		<h1>Hello {{store.name}} ! This is your Vue App</h1>
 		<div>
 			<img src="/images/vue.svg" /> +
-			<div className="vite-bg"></div>
+			<div class="vite-bg"></div>
 		</div>
+		<router-view></router-view>
 	</div>
 </template>
 
