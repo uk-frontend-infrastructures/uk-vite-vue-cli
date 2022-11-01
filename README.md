@@ -1,1 +1,1 @@
-## Vue 3 + TypeScript + Vite
+## 快速搭建 vue app
