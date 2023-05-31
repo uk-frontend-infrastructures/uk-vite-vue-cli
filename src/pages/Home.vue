@@ -1,22 +1,27 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { useUser } from '@/store/user';
-defineProps<{ msg: string }>();
-const store = useUser()
+
+const userStore = useUser();
+const { name } = storeToRefs(userStore);
+
+const _PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL;
 </script>
 
 <template>
-	<div class="hello-world">
-		<h1>Hello {{ store.name }} ! This is your Vue App</h1>
+	<div class="home-box">
+		<h1>{{ name }} 您好! 这是您的 Vue App</h1>
 		<div>
-			<img src="/images/vue.svg" /> +
-			<div class="vite-bg"></div>
+			<img src="../assets/images/vite.svg" />
+			+
+			<img :src="_PUBLIC_URL + 'images/vue.svg'" />
 		</div>
 		<router-view></router-view>
 	</div>
 </template>
 
 <style lang="less" scoped>
-.hello-world {
+.home-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,16 +45,6 @@ const store = useUser()
             width: 100px;
             height: auto;
             margin: 0 20px;
-        }
-
-        .vite-bg {
-            width: 100px;
-            height: 100px;
-            margin: 0 20px;
-            background-image: url(@/assets/images/vite.svg);
-            background-repeat: no-repeat;
-            background-size: auto 100%;
-            background-position: center;
         }
     }
 }

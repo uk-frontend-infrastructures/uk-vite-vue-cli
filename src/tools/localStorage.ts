@@ -1,4 +1,4 @@
-const TOKEN_KEY = 'APP_TOKEN';
+const TOKEN_KEY = 'APP_USER_TOKEN';
 
 // 获取token
 export const getToken = () => {

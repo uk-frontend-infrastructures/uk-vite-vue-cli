@@ -2,8 +2,6 @@ import * as VueRouter from 'vue-router';
 import routes from './routes';
 import { getToken } from '@/tools/localStorage';
 
-console.log(import.meta.env.BASE_URL);
-
 const router = VueRouter.createRouter({
 	history: VueRouter.createWebHistory(import.meta.env.BASE_URL),
 	routes

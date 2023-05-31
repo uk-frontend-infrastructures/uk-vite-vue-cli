@@ -20,6 +20,8 @@
 	"rules": {
 		"prettier/prettier": "error", // 对于不符合prettier报eslint错误
 		"@typescript-eslint/no-var-requires": 0,
-		"@typescript-eslint/ban-types": "off"
+		"@typescript-eslint/ban-types": "off",
+		"vue/multi-word-component-names": "off", // 驼峰命名
+		"no-undef": "off"
 	}
 }
