@@ -1,20 +1,17 @@
 // https://vitejs.dev/config/
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import htmlPlugin, { Options as HtmlPluginOptions } from 'vite-plugin-html-config';
 import path from 'path';
 
-const _BASE_URL = 'test';
-
 export default defineConfig(({ mode }) => {
-	if (mode === 'development') {
-		//
-	}
+	const env = loadEnv(mode, process.cwd(), '');
+	const _BASE_URL = env.VITE_BASE_URL;
 
 	const htmlPluginOption: HtmlPluginOptions = {
-		favicon: '/favicon.ico',
-		// headScripts: [{ src: `./config.js` }],
-		style: ``
+		// favicon: '/favicon.ico',
+		// headScripts: [{ src: `/config.js` }],
+		// style: ``
 	};
 
 	return {

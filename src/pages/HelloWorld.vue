@@ -6,7 +6,7 @@ const store = useUser()
 
 <template>
 	<div class="hello-world">
-		<h1>Hello {{store.name}} ! This is your Vue App</h1>
+		<h1>Hello {{ store.name }} ! This is your Vue App</h1>
 		<div>
 			<img src="/images/vue.svg" /> +
 			<div class="vite-bg"></div>
