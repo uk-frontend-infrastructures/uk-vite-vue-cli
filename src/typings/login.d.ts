@@ -1,5 +1,6 @@
 type LoginDataType = {
 	account: string;
 	password: string;
-	code: string; // 验证码
+	validCode: string; // 验证码
+	validCodeID: string; // 验证码id
 };

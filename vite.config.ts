@@ -28,9 +28,11 @@ export default defineConfig(({ mode }) => {
 			hmr: true, // 开启热更新
 			// 开发环境-服务代理
 			proxy: {
-				// '/api': {
-				// 	target: 'http://xxx.xxx.xxx'
-				// }
+				'/api': {
+					target: 'http://172.16.9.57:8002/',
+					changeOrigin: true,
+					rewrite: path => path.replace(/^\/api/, '')
+				}
 			}
 		},
 		base: _BASE_URL,

@@ -1,50 +1,27 @@
-// 请求类型
-declare enum ApiRequestType {
-	POST = 'POST',
+enum RequestMethod {
 	GET = 'GET',
-	DELETE = 'DELETE',
+	POST = 'POST',
+	PATCH = 'PATCH',
 	PUT = 'PUT',
-	UPDATE = 'UPDATE'
+	DELETE = 'DELETE'
 }
 
-// 请求头
-interface HeaderProps {
-	[key: string]: string;
+enum ResponseCode {
+	200 = '请求成功',
+	202 = '请求成功，请求已接受，但是还没有处理完成',
+	400 = '参数错误',
+	401 = '授权错误', // 通常用在 Token 缺失或失效，注意 401 会触发前端跳转到登录页
+	403 = '操作被拒绝，通常发生在权限不足时，注意此时务必带上详细错误信息',
+	404 = '未找到',
+	500 = '服务器错误'
 }
 
-// 请求参数
-interface RequestProps {
-	/** 请求地址 */
-	url: string;
-	/** 请求类型 */
-	type?: string;
-	/** 请求体 */
-	data?: any;
-	/** 请求头 */
-	headerConfig?: HeaderProps;
-	params?: object;
-	/** 是否携带Token */
-	withToken?: boolean;
-	/** 是否上传文件 */
-	file?: boolean;
-}
-
-// 响应结果
-interface ResponseResult<T> {
-	token: string;
+interface ResponseResult {
 	state: boolean;
-	status?: number;
+	status: number;
+	data: any;
 	code?: string;
 	message?: string;
 	title?: string;
-	total: number;
-	data: T;
 	newToken?: string;
-}
-
-// 请求错误
-interface RequestError {
-	[key: string]: any;
-	code: string | number | undefined;
-	message?: string;
 }

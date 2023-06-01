@@ -3,14 +3,14 @@ import { storeToRefs } from 'pinia';
 import { useUser } from '@/store/user';
 
 const userStore = useUser();
-const { name } = storeToRefs(userStore);
+const { userInfo } = storeToRefs(userStore);
 
 const _PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL;
 </script>
 
 <template>
 	<div class="home-box">
-		<h1>{{ name }} 您好! 这是您的 Vue App</h1>
+		<h1>{{ userInfo?.name }} 您好! 这是您的 Vue App</h1>
 		<div>
 			<img src="../assets/images/vite.svg" />
 			+
