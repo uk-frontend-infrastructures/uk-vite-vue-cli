@@ -14,10 +14,9 @@ export const useUser = defineStore('user', {
 		async login(params: LoginDataType) {
 			this.name = params.account;
 			setToken(new Date().getTime().toString());
-			router.push({
-				path: '/home'
-			});
+			router.push('/home');
 		},
+		// 获取用户信息
 		async getUserInfo() {
 			//
 		}

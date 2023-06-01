@@ -4,19 +4,21 @@ import { getToken } from '@/tools/localStorage';
 
 const router = VueRouter.createRouter({
 	history: VueRouter.createWebHistory(import.meta.env.BASE_URL),
-	routes
+	routes,
+	strict: true
 });
 
 // 路由守卫
-router.beforeEach(async (to, from) => {
-	if (
-		// 检查用户是否已登录
-		getToken() &&
-		// ❗️ 避免无限重定向
-		to.name !== 'Login'
-	) {
-		// 将用户重定向到登录页面
-		return { name: 'Login' };
+router.beforeEach(async (to, from, next) => {
+	if (getToken()) {
+		next();
+	} else {
+		if (to.name !== 'login') {
+			next('/login');
+		} else {
+			next();
+		}
 	}
 });
+
 export default router;

@@ -9,17 +9,17 @@ const routes = [
 	},
 	{
 		path: '/login',
-		name: 'Login',
+		name: 'login',
 		component: Login
 	},
 	{
 		path: '/home',
-		name: 'Home',
+		name: 'home',
 		component: Home
 	},
 	{
 		path: '/:pathMatch(.*)',
-		name: '404',
+		name: 'NotFound',
 		component: NotFound
 	}
 ];
