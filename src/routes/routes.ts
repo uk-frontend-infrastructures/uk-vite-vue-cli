@@ -1,6 +1,6 @@
-const Login = () => import('@/pages/Login.vue');
-const Home = () => import('@/pages/Home.vue');
-const NotFound = () => import('@/pages/NotFound.vue');
+const Login = () => import('@/views/Login.vue');
+const Home = () => import('@/views/Home.vue');
+const NotFound = () => import('@/views/NotFound.vue');
 
 const routes = [
 	{

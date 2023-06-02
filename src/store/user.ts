@@ -20,6 +20,7 @@ export const useUser = defineStore('user', {
 				setToken(res?.title);
 				this.userInfo = res.data;
 				await this.getUserMenus();
+				window.$message.success(`您好  ${res.data.name}`);
 				router.push('/home');
 			}
 		},

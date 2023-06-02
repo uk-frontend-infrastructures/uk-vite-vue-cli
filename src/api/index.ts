@@ -26,6 +26,7 @@ export const alovaInstance = createAlova({
 			}
 			const json: ResponseResult = await response.json();
 			if (json.status !== 200) {
+				window.$message.warning(json.title || '');
 				// 抛出错误或返回reject状态的Promise实例时，此请求将抛出错误
 				throw new Error(json.title);
 			}
