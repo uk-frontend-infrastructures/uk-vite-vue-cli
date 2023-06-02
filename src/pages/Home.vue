@@ -16,6 +16,7 @@ const _PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL;
 			+
 			<img :src="_PUBLIC_URL + 'images/vue.svg'" />
 		</div>
+		<button @click="userStore.logout">退出</button>
 		<router-view></router-view>
 	</div>
 </template>

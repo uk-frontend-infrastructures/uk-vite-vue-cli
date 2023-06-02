@@ -4,7 +4,7 @@ import VueHook from 'alova/vue';
 import { getToken, setToken } from '@/tools/localStorage';
 
 // alova请求实例
-const alovaInstance = createAlova({
+export const alovaInstance = createAlova({
 	baseURL: window._GlobalConfig?._API_ROOT,
 	// VueHook用于创建ref状态，包括请求状态loading、响应数据data、请求错误对象error等
 	statesHook: VueHook,
@@ -38,5 +38,3 @@ const alovaInstance = createAlova({
 		}
 	}
 });
-
-export default alovaInstance;

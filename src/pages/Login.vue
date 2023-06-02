@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { NForm, NFormItem, NInput, NButton, FormInst } from 'naive-ui';
 import { useUser } from '@/store/user';
-import UserApi from '@/api/user';
+import { userValidCode } from '@/api/user';
 
 const userStore = useUser();
 const loginData = reactive<LoginDataType>({ account: '', password: '', validCode: '', validCodeID: '' });
@@ -76,7 +76,7 @@ const login = (e: MouseEvent) => {
 				</n-form-item>
 				<n-form-item label="验证码" path="validCode">
 					<n-input v-model:value="loginData.validCode" placeholder="请输入验证码" />
-					<img width="100" @click="JsNewGuid()" :src="UserApi.ValidCode + loginData.validCodeID" alt="验证码" />
+					<img width="100" @click="JsNewGuid()" :src="userValidCode + loginData.validCodeID" alt="验证码" />
 				</n-form-item>
 				<div class="login-btn">
 					<n-button round type="primary" @click="login"> 登录 </n-button>
