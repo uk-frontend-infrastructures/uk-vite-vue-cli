@@ -17,10 +17,9 @@ enum ResponseCode {
 }
 
 interface ResponseResult {
-	state: boolean;
+	status: boolean;
 	data: any;
-	code?: number;
-	message?: string;
-	title?: string;
+	code: number;
+	message: string;
 	newToken?: string;
 }
