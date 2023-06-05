@@ -42,10 +42,33 @@ export default defineMock({
 			status: true,
 			data: [
 				{
-					path: '/home',
-					key: 'home',
-					name: '首页',
+					path: '/welcome',
+					key: 'welcome',
+					enName: 'weclome',
+					zhName: '欢迎',
+					buttons: [],
 					status: true
+				},
+				{
+					path: '/management',
+					key: 'management',
+					enName: 'management',
+					zhName: '管理',
+					buttons: [],
+					status: true,
+					children: [
+						{
+							path: 'user',
+							key: 'user',
+							enName: 'user',
+							zhName: '用户',
+							buttons: [
+								{ name: '添加', key: 'add', status: true },
+								{ name: '编辑', key: 'edit', status: false }
+							],
+							status: true
+						}
+					]
 				}
 			],
 			code: 200,

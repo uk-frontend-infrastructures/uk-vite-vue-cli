@@ -3,6 +3,16 @@ import { setToken, getToken, removeToken } from '@/tools/localStorage';
 import router from '@/routes';
 import { userLogin, userInfo, userMenus } from '@/api/user';
 
+interface MenuType {
+	path: string; // 路由地址
+	key: string;
+	enName: string; // 英文名
+	zhName: string; // 中文名称
+	buttons: any[]; // 按钮权限
+	status: boolean; // 是否有权限
+	children?: MenuType[]; // 子菜单
+}
+
 // 第一个参数是应用程序中 store 的唯一 id
 const useUser = defineStore('user', {
 	// 推荐使用 完整类型推断的箭头函数
@@ -10,7 +20,7 @@ const useUser = defineStore('user', {
 		userInfo: {
 			name: ''
 		} as { name: string; [PropsName: string]: any },
-		userMenus: []
+		userMenus: [] as MenuType[]
 	}),
 	actions: {
 		// 登录
@@ -20,7 +30,7 @@ const useUser = defineStore('user', {
 				setToken(res?.data);
 				await this.getUserInfo();
 				window.$message.success(`您好  ${params.account}`);
-				router.push('/home');
+				router.push('/');
 			} else {
 				window.$message.warning(res.message);
 			}

@@ -1,9 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+</script>
 
 <template>
 	<div class="not-found-page">
 		<span>页面走丢了</span>
-		<router-link to="/">返回主页</router-link>
+		<a @click="router.go(-1)">返回上一页</a>
 	</div>
 </template>
 
@@ -17,6 +21,9 @@
     height: 100%;
     >span {
         color: red;
+    }
+    >a {
+        cursor: pointer;
     }
 }
 </style>
