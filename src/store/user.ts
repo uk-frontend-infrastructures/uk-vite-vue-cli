@@ -4,7 +4,7 @@ import router from '@/routes';
 import { userLogin, userInfo, userMenus } from '@/api/user';
 
 // 第一个参数是应用程序中 store 的唯一 id
-export const useUser = defineStore('user', {
+const useUser = defineStore('user', {
 	// 推荐使用 完整类型推断的箭头函数
 	state: () => ({
 		userInfo: {
@@ -49,3 +49,5 @@ export const useUser = defineStore('user', {
 		}
 	}
 });
+
+export default useUser;

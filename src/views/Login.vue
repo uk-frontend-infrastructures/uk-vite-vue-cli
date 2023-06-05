@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { NForm, NFormItem, NInput, NButton, FormInst } from 'naive-ui';
-import { useUser } from '@/store/user';
+import useUser from '@/store/user';
 
 const userStore = useUser();
 const loginData = reactive<LoginDataType>({ account: '', password: '' });
