@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
 			// 开发环境-服务代理
 			proxy: {
 				'/api': {
-					target: 'http://172.16.9.57:8002/',
+					target: 'http://172.16.32.49:9000/',
 					changeOrigin: true,
 					rewrite: path => path.replace(/^\/api/, '')
 				}

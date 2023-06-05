@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"types": ["vite/client"],
+		"types": ["vite/client", "node"],
 		"target": "ESNext",
 		"useDefineForClassFields": true,
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -21,6 +21,6 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/mock/index.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

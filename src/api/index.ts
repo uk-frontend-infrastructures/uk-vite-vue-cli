@@ -1,7 +1,9 @@
 import { createAlova } from 'alova';
-import GlobalFetch from 'alova/GlobalFetch';
+// import GlobalFetch from 'alova/GlobalFetch';
 import VueHook from 'alova/vue';
 import { getToken, setToken } from '@/tools/localStorage';
+
+import mockAdapter from '@/mock'; // 模拟请求数据
 
 // alova请求实例
 export const alovaInstance = createAlova({
@@ -9,7 +11,7 @@ export const alovaInstance = createAlova({
 	// VueHook用于创建ref状态，包括请求状态loading、响应数据data、请求错误对象error等
 	statesHook: VueHook,
 	// 请求适配器，推荐使用fetch
-	requestAdapter: GlobalFetch(),
+	requestAdapter: mockAdapter, // GlobalFetch(),
 	// 全局请求拦截器
 	beforeRequest: method => {
 		method.config.headers = {
@@ -25,15 +27,15 @@ export const alovaInstance = createAlova({
 				throw new Error(response.statusText);
 			}
 			const json: ResponseResult = await response.json();
-			if (json.status !== 200) {
-				window.$message.warning(json.title || '');
+			if (json.code !== 200) {
+				window.$message.error(json.message || '');
 				// 抛出错误或返回reject状态的Promise实例时，此请求将抛出错误
-				throw new Error(json.title);
+				throw new Error(json.message);
 			}
 			if (json.newToken) setToken(json.newToken);
 			return json;
 		},
-		// 请求失败拦
+		// 请求失败拦截
 		onError: async err => {
 			throw new Error(err);
 		}

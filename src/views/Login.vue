@@ -1,28 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
 import { NForm, NFormItem, NInput, NButton, FormInst } from 'naive-ui';
 import { useUser } from '@/store/user';
-import { userValidCode } from '@/api/user';
 
 const userStore = useUser();
-const loginData = reactive<LoginDataType>({ account: '', password: '', validCode: '', validCodeID: '' });
+const loginData = reactive<LoginDataType>({ account: '', password: '' });
 
 const formRef = ref<FormInst | null>(null);
 
-const JsNewGuid = () => {
-    let curguid = "";
-    for (let i = 1; i <= 32; i++) {
-        const id = Math.floor(Math.random() * 16.0).toString(16);
-        curguid += id;
-        if ((i === 8) || (i === 12) || (i === 16) || (i === 20))
-            curguid += "-";
-    }
-    loginData.validCodeID = curguid;
-}
-
-onMounted(() => {
-    JsNewGuid();
-});
 
 // 登录
 const login = (e: MouseEvent) => {
@@ -30,10 +15,8 @@ const login = (e: MouseEvent) => {
         formRef.value?.validate((errors) => {
           if (!errors) {
             const resParams = {
-                account: window.btoa(encodeURIComponent(loginData.account)),
-                password: window.btoa(encodeURIComponent(loginData.password)),
-                validCode: loginData.validCode,
-                validCodeID: loginData.validCodeID
+                account: loginData.account,
+                password: loginData.password,
             }
             userStore.login(resParams)
           }
@@ -57,11 +40,6 @@ const login = (e: MouseEvent) => {
                     required: true,
                     message: '请输入密码',
                     trigger: ['input', 'blur']
-                },
-                validCode: {
-                    required: true,
-                    message: '请输入验证码',
-                    trigger: ['input', 'blur']
                 }
             }"
 				label-placement="left"
@@ -69,14 +47,10 @@ const login = (e: MouseEvent) => {
 				require-mark-placement="right-hanging"
 			>
 				<n-form-item label="账号" path="account">
-					<n-input v-model:value="loginData.account" placeholder="请输入账号" />
+					<n-input v-model:value="loginData.account" placeholder="请输入账号:admin" />
 				</n-form-item>
 				<n-form-item label="密码" path="password">
-					<n-input v-model:value="loginData.password" placeholder="请输入密码" />
-				</n-form-item>
-				<n-form-item label="验证码" path="validCode">
-					<n-input v-model:value="loginData.validCode" placeholder="请输入验证码" />
-					<img width="100" @click="JsNewGuid()" :src="userValidCode + loginData.validCodeID" alt="验证码" />
+					<n-input v-model:value="loginData.password" placeholder="请输入密码:111" />
 				</n-form-item>
 				<div class="login-btn">
 					<n-button round type="primary" @click="login"> 登录 </n-button>

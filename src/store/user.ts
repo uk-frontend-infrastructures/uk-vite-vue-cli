@@ -16,12 +16,14 @@ export const useUser = defineStore('user', {
 		// 登录
 		async login(params: LoginDataType) {
 			const res: any = await userLogin(params).send();
-			if (res.status === 200) {
-				setToken(res?.title);
+			if (res.code === 200 && res.status) {
+				setToken(res?.token);
 				this.userInfo = res.data;
 				await this.getUserMenus();
 				window.$message.success(`您好  ${res.data.name}`);
 				router.push('/home');
+			} else {
+				window.$message.warning(res.message);
 			}
 		},
 		// 登出
@@ -33,7 +35,7 @@ export const useUser = defineStore('user', {
 		async getUserInfo() {
 			if (getToken()) {
 				const res: any = await userInfo().send();
-				if (res.status === 200) {
+				if (res.code === 200) {
 					this.userInfo = res.data;
 					this.getUserMenus();
 				}
@@ -41,8 +43,8 @@ export const useUser = defineStore('user', {
 		},
 		// 获取菜单
 		async getUserMenus() {
-			const res: any = await userMenus({ type: 1 }).send();
-			if (res.status === 200) {
+			const res: any = await userMenus().send();
+			if (res.code === 200) {
 				this.userMenus = res.data;
 			}
 		}
