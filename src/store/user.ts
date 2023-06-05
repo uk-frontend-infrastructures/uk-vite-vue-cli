@@ -17,10 +17,9 @@ export const useUser = defineStore('user', {
 		async login(params: LoginDataType) {
 			const res: any = await userLogin(params).send();
 			if (res.code === 200 && res.status) {
-				setToken(res?.token);
-				this.userInfo = res.data;
-				await this.getUserMenus();
-				window.$message.success(`您好  ${res.data.name}`);
+				setToken(res?.data);
+				await this.getUserInfo();
+				window.$message.success(`您好  ${params.account}`);
 				router.push('/home');
 			} else {
 				window.$message.warning(res.message);

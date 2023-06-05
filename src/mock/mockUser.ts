@@ -20,14 +20,9 @@ export default defineMock({
 		const state = validAccountPwd(data.account, data.password);
 		return {
 			status: state.status,
-			data: state.status
-				? {
-						name: data.account
-				  }
-				: null,
+			data: state.status ? new Date().getTime().toString() : null,
 			code: 200,
 			message: state.message,
-			token: state.status ? new Date().getTime().toString() : null,
 			newToken: null
 		};
 	},
