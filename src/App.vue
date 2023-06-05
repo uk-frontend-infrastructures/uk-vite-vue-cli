@@ -3,7 +3,7 @@ import { onMounted } from 'vue';
 import { NConfigProvider, zhCN, dateZhCN, NMessageProvider } from 'naive-ui';
 import BaseContent from '@/components/BaseContent.vue';
 import { storeToRefs } from 'pinia';
-import { useUser } from '@/store/user';
+import useUser from '@/store/user';
 
 const userStore = useUser();
 const { userInfo } = storeToRefs(userStore);
