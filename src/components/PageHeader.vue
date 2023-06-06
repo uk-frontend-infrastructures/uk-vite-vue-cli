@@ -9,7 +9,7 @@ const userStore = useUser();
 <template>
 	<div class="header-box">
 		页面头部 &nbsp;&nbsp;&nbsp;&nbsp;
-		<button @click="router.go(-1)">返回</button>
+		<button @click="router.push('/welcome')">返回</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<button @click="userStore.logout">退出</button>
 	</div>

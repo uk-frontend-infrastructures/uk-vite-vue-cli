@@ -27,6 +27,7 @@ const { menus, level }: any = toRefs(props);
 .menu-ul {
 	padding-left: 0.5rem;
 	list-style: none;
+
 	>li {
 		padding: 0.5rem 0;
 	}

@@ -58,15 +58,26 @@ export default defineMock({
 					status: true,
 					children: [
 						{
-							path: 'user',
+							path: '/management/user',
 							key: 'user',
 							enName: 'user',
-							zhName: '用户',
+							zhName: '用户管理',
+							buttons: [
+								{ name: '添加', key: 'add', status: true },
+								{ name: '编辑', key: 'edit', status: true }
+							],
+							status: true
+						},
+						{
+							path: '/management/role',
+							key: 'role',
+							enName: 'role',
+							zhName: '角色管理',
 							buttons: [
 								{ name: '添加', key: 'add', status: true },
 								{ name: '编辑', key: 'edit', status: false }
 							],
-							status: true
+							status: false
 						}
 					]
 				}

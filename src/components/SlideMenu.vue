@@ -20,11 +20,5 @@ const { userMenus } = storeToRefs(userStore);
     padding: 1rem;
     background-color: #fff;
     box-sizing: border-box;
-    ul {
-        list-style: none;
-        >li {
-            padding: 0.5rem 0;
-        }
-    }
 }
 </style>
